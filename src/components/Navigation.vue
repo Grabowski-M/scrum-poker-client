@@ -2,7 +2,7 @@
   <div class="navigation">
     <div>
       <h2 class="navigation__link">
-        <router-link to="/join">Join room</router-link>
+        <router-link to="/poker/join">Join room</router-link>
       </h2>
     </div>
     <div>
@@ -10,7 +10,7 @@
     </div>
     <div>
       <h2 class="navigation__link">
-        <router-link to="/new">Create a new one</router-link>
+        <router-link to="/poker/new">Create a new one</router-link>
       </h2>
     </div>
   </div>
