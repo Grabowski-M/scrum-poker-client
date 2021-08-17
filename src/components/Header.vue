@@ -15,8 +15,8 @@
 }
 
 .header__button {
-  font-style: italic;
-  font-size: 1.6rem;
+  font-size: 2rem;
+  margin-left: 16px;
 }
 
 .header__button a {

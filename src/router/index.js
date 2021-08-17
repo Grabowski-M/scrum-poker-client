@@ -13,7 +13,7 @@ const routes = [
     component: Workspace,
     children: [
       { path: 'join', component: JoinRoom },
-      { path: 'join/:id', component: PokerRoom },
+      { path: 'room/:id', component: PokerRoom },
       { path: 'new', component: PokerForm },
     ],
   },

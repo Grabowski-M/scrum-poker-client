@@ -1,7 +1,9 @@
 <template>
   <Header />
-  <div class="workspace">
-    <router-view />
+  <div class="workspace__wrapper">
+    <div class="workspace">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -14,8 +16,14 @@ export default {
 </script>
 
 <style>
+.workspace__wrapper {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+}
+
   .workspace {
     width: 100%;
-    margin-top: 200px;
+    margin-bottom: 200px;
   }
 </style>

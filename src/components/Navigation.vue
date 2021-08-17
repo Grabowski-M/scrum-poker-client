@@ -1,27 +1,38 @@
 <template>
-  <div class="navigation">
-    <div>
-      <h2 class="navigation__link">
-        <router-link to="/poker/join">Join room</router-link>
-      </h2>
-    </div>
-    <div>
-      <p class="navigation__paragraph">or</p>
-    </div>
-    <div>
-      <h2 class="navigation__link">
-        <router-link to="/poker/new">Create a new one</router-link>
-      </h2>
+  <div class="navigation__wrapper">
+    <div class="navigation">
+      <div>
+        <h2 class="navigation__link">
+          <router-link to="/poker/join">Join room</router-link>
+        </h2>
+      </div>
+      <div>
+        <p class="navigation__paragraph">or</p>
+      </div>
+      <div>
+        <h2 class="navigation__link">
+          <router-link to="/poker/new">Create a new one</router-link>
+        </h2>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
+.navigation__wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
 .navigation {
-  width: 100%;
   max-width: 600px;
-  margin: 200px auto 0;
   text-align: center;
+  margin: 0 auto 100px;
+}
+
+.navigation__link {
+  margin: 24px 0;
 }
 
 .navigation__link a {
