@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 .customButton {
-  background: #4d9dea;
+  background: var(--accent-color);
   padding: 8px 32px;
   border: none;
   color: white;
@@ -30,7 +30,7 @@ export default {
 }
 
 .customButton--disabled {
-  background: #d5d5d5;
+  background: var(--button-disabled-background);
   cursor: not-allowed;
 }
 

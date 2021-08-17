@@ -21,6 +21,6 @@
 
 .header__button a {
   text-decoration: none;
-  color: inherit;
+  color: var(--font-color);
 }
 </style>

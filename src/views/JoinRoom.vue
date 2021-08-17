@@ -75,10 +75,10 @@ export default {
   box-sizing: border-box;
   padding: 24px;
   font-size: 2.4rem;
-  border: 3px solid grey;
+  border: 3px solid var(--borders-color);
   border-radius: 8px;
   font-weight: bold;
-  box-shadow: 0 0 20px 5px #eaeaea;
+  box-shadow: 0 0 20px 5px var(--box-shadow-color);
   transform: scale(1);
   transition: .3s;
   margin-bottom: 32px;
@@ -91,7 +91,7 @@ export default {
 
 .joinRoom__form__input:focus {
   outline: none;
-  box-shadow: 10px 10px 15px 10px #eaeaea;
+  box-shadow: 10px 10px 15px 10px var(--box-shadow-color);
   transform: scale(1.05);
 }
 
