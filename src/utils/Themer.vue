@@ -45,9 +45,9 @@ export default {
 
 <style>
 html.light {
-  --background-color: #eaeaea;
-  --font-color: #313131;
-  --box-shadow-color: #eaeaea;
+  --background-color: #f3f3f3;
+  --font-color: #404040;
+  --box-shadow-color: #e3e3e3;
   --borders-color: grey;
   --accent-color: #4d9dea;
 
@@ -60,9 +60,9 @@ html.light {
 
 html.dark {
   --background-color: #2d2d2d;
-  --font-color: white;
-  --box-shadow-color: #1a1a1a;
-  --borders-color: #131313;
+  --font-color: #cecece;
+  --box-shadow-color: #282828;
+  --borders-color: #232323;
   --accent-color: #ff6600;
 
   --button-disabled-background: #242424;
@@ -76,8 +76,8 @@ html.dark {
 <style scoped>
 .themeToggle__wrapper {
   position: absolute;
-  bottom: 32px;
-  right: 32px;
+  bottom: 16px;
+  right: 16px;
 }
 
 .themeToggle {

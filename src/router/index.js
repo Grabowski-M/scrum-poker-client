@@ -3,7 +3,7 @@ import Home from '../views/Home.vue';
 import Workspace from '../views/Workspace.vue';
 import JoinRoom from '../views/JoinRoom.vue';
 import PokerRoom from '../views/PokerRoom.vue';
-import PokerForm from '../views/PokerForm.vue';
+import NewRoom from '../views/NewRoom.vue';
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -12,9 +12,9 @@ const routes = [
     name: 'Workspace',
     component: Workspace,
     children: [
+      { path: 'new', component: NewRoom },
       { path: 'join', component: JoinRoom },
       { path: 'room/:id', component: PokerRoom },
-      { path: 'new', component: PokerForm },
     ],
   },
 ];
