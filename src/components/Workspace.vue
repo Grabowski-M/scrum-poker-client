@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Header from '../components/Header.vue';
+import Header from './Header.vue';
 
 export default {
   components: { Header },
@@ -20,6 +20,8 @@ export default {
   display: flex;
   height: 100vh;
   align-items: center;
+  padding: 60px 0;
+  margin-top: -60px;
 }
 
   .workspace {
