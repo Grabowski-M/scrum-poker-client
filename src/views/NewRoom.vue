@@ -12,14 +12,17 @@
               :focus-on-load="true"
           />
           <custom-input
-              class="newRoom__form__input newRoom__form__input--password"
-              type="text"
-              v-model="password"
-              placeholder="password (optional)"
-              disabled
+            class="newRoom__form__input newRoom__form__input--secondary"
+            type="text"
+            v-model="username"
+            placeholder="username"
           />
           <div class="newRoom__form__button__wrapper">
-            <custom-button :disabled="!roomId">
+            <custom-button
+              type="submit"
+              :on-click="createNewRoom"
+              :disabled="!roomId || !username"
+            >
               create room
             </custom-button>
           </div>
@@ -38,18 +41,28 @@ export default {
   data() {
     return {
       roomId: '',
+      username: '',
       password: '',
     };
   },
   methods: {
-    createNewRoom() {
-
+    createNewRoom(e) {
+      e.preventDefault();
+      this.setUsername(this.username);
+    },
+    setUsername(username) {
+      localStorage.setItem('username', username);
+      this.username = username;
     },
   },
   components: {
     FadeIn,
     CustomButton,
     CustomInput,
+  },
+  beforeMount() {
+    const username = localStorage.getItem('username') || '';
+    this.setUsername(username);
   },
 };
 </script>
@@ -72,20 +85,13 @@ export default {
   width: 100%;
   padding: 24px;
   font-size: 2.4rem;
-  border: 3px solid var(--borders-color);
   font-weight: bold;
   margin-bottom: 32px;
 }
 
-.newRoom__form__input--password {
-  font-size: 1.6rem;
+.newRoom__form__input--secondary {
+  font-size: 1rem;
   font-weight: normal;
-}
-
-.newRoom__form__input:focus {
-  outline: none;
-  box-shadow: 10px 10px 15px 10px var(--box-shadow-color);
-  transform: scale(1.05);
 }
 
 .newRoom__form__button__wrapper {

@@ -47,7 +47,7 @@ export default {
 html.light {
   --background-color: #f3f3f3;
   --font-color: #404040;
-  --box-shadow-color: #e3e3e3;
+  --box-shadow-color: #dbdbdb;
   --borders-color: grey;
   --accent-color: #4d9dea;
 
@@ -59,10 +59,10 @@ html.light {
 }
 
 html.dark {
-  --background-color: #2d2d2d;
+  --background-color: #313131;
   --font-color: #cecece;
   --box-shadow-color: #282828;
-  --borders-color: #232323;
+  --borders-color: #393939;
   --accent-color: #ff6600;
 
   --button-disabled-background: #242424;

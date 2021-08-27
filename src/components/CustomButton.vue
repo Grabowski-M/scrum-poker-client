@@ -3,6 +3,8 @@
       class="customButton"
       :class="{[className]: !!className, 'customButton--disabled': disabled }"
       :disabled="disabled"
+      :type="type"
+      @click="onClick"
   >
     <slot/>
   </button>
@@ -13,6 +15,8 @@ export default {
   props: {
     className: String,
     disabled: Boolean,
+    type: String,
+    onClick: Function,
   },
 };
 </script>
