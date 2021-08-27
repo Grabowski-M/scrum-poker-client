@@ -1,8 +1,8 @@
 <template>
-  <Header />
+  <Header/>
   <div class="workspace__wrapper">
     <div class="workspace">
-      <router-view />
+      <router-view/>
     </div>
   </div>
 </template>
@@ -24,8 +24,14 @@ export default {
   margin-top: -60px;
 }
 
-  .workspace {
-    width: 100%;
-    margin-bottom: 200px;
+.workspace {
+  width: 100%;
+  margin-bottom: 200px;
+}
+
+@media screen and (max-width: 480px) {
+  .workspace__wrapper {
+    margin-top: 24px;
   }
+}
 </style>

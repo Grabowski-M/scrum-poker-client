@@ -70,6 +70,7 @@ export default {
 <style>
 .newRoom {
   width: 100%;
+  padding: 16px;
 }
 
 .newRoom__form__heading {
@@ -99,5 +100,9 @@ export default {
   display: flex;
   justify-content: flex-end;
   z-index: 2;
+}
+
+@media screen and (max-width: 480px) {
+
 }
 </style>

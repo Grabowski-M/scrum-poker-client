@@ -12,7 +12,7 @@
               :focus-on-load="true"
           />
           <custom-input
-              class="joinRoom__form__input joinRoom__form__input--password"
+              class="joinRoom__form__input joinRoom__form__input--secondary"
               type="text"
               v-model="password"
               placeholder="password (optional)"
@@ -57,6 +57,7 @@ export default {
 <style>
 .joinRoom {
   width: 100%;
+  padding: 16px;
 }
 
 .joinRoom__form__heading {
@@ -80,7 +81,7 @@ export default {
   margin-bottom: 32px;
 }
 
-.joinRoom__form__input--password {
+.joinRoom__form__input--secondary {
   font-size: 1.6rem;
   font-weight: normal;
 }
@@ -96,5 +97,13 @@ export default {
   display: flex;
   justify-content: flex-end;
   z-index: 2;
+}
+
+@media screen and (max-width: 480px) {
+  .joinRoom__form__input {
+    padding: 16px;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
 }
 </style>

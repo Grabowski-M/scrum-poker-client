@@ -23,6 +23,7 @@
   height: 100vh;
   display: flex;
   align-items: center;
+  padding: 16px;
 }
 
 .navigation {
@@ -46,7 +47,18 @@
 }
 
 .navigation__paragraph {
- font-size: 2rem;
+  font-size: 2rem;
   font-style: italic;
+}
+
+@media screen and (max-width: 480px) {
+  .navigation__link a {
+    font-size: 2rem;
+    text-decoration: underline;
+  }
+
+  .navigation__paragraph {
+    font-size: 1.6rem;
+  }
 }
 </style>

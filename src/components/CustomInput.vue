@@ -38,15 +38,14 @@ export default {
   padding: 24px;
   font-size: 1.6rem;
   font-weight: normal;
-  /*border: 2px solid var(--borders-color);*/
   border: none;
   border-radius: 6px;
-  box-shadow: 0 0 20px 5px var(--box-shadow-color);
+  box-shadow: 0 0 10px 5px var(--box-shadow-color);
   transition: .3s;
 }
 
 .customInput:focus {
-  box-shadow: 6px 6px 15px 10px var(--box-shadow-color);
+  box-shadow: 6px 6px 12px 8px var(--box-shadow-color);
   transform: scale(1.02);
   outline: none;
 }
