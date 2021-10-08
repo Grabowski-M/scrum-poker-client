@@ -5,4 +5,7 @@ export default {
   connecting(state) {
     return state.connecting;
   },
+  roomExistsError(state) {
+    return state.room.roomExistsError;
+  },
 };

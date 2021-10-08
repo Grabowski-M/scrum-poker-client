@@ -5,14 +5,14 @@
         <h1 class="newRoom__form__heading">Create new room</h1>
         <form>
           <custom-input
-              class-name="newRoom__form__input"
-              type="text"
-              v-model="roomId"
-              placeholder="room id"
-              :focus-on-load="true"
+            class-name="newRoom__form__input"
+            type="text"
+            v-model="roomId"
+            placeholder="room id"
+            :focus-on-load="true"
           />
           <custom-input
-            class="newRoom__form__input newRoom__form__input--secondary"
+            class-name="newRoom__form__input newRoom__form__input--secondary"
             type="text"
             v-model="username"
             placeholder="username"
@@ -26,6 +26,10 @@
               create room
             </custom-button>
           </div>
+          <div v-if="roomExistsError">
+            Room with that id already exists.
+            <router-link to="/poker/join">Try joining it instead</router-link>
+          </div>
         </form>
       </div>
     </div>
@@ -36,6 +40,7 @@
 import CustomButton from '../components/CustomButton.vue';
 import CustomInput from '../components/CustomInput.vue';
 import FadeIn from '../components/Animations/FadeIn.vue';
+import { eventTypes } from '../constants/eventTypes';
 
 export default {
   data() {
@@ -45,9 +50,21 @@ export default {
       password: '',
     };
   },
+  computed: {
+    roomExistsError() {
+      return this.$store.getters.roomExistsError;
+    },
+  },
   methods: {
     createNewRoom(e) {
       e.preventDefault();
+      const { connection } = this.$store.getters;
+
+      connection.emit(eventTypes.CREATE_NEW_ROOM, {
+        roomId: this.roomId,
+        username: this.username,
+      });
+
       this.setUsername(this.username);
     },
     setUsername(username) {
@@ -91,7 +108,7 @@ export default {
 }
 
 .newRoom__form__input--secondary {
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: normal;
 }
 
@@ -103,6 +120,10 @@ export default {
 }
 
 @media screen and (max-width: 480px) {
-
+  .newRoom__form__input {
+    padding: 16px;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
 }
 </style>

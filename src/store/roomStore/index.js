@@ -6,6 +6,9 @@ export default {
   state: {
     connection: null,
     connecting: true,
+    room: {
+      roomExistsError: false,
+    },
   },
   mutations,
   getters,

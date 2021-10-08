@@ -3,32 +3,38 @@
 </template>
 
 <script>
+import io from 'socket.io-client';
+import { eventTypes } from '../constants/eventTypes';
+
 export default {
   methods: {
     connect() {
       return new Promise((resolve, reject) => {
-        const connection = new WebSocket('ws://localhost:7071/ws');
+        const connection = io('http://localhost:3011');
 
-        connection.onopen = () => {
+        connection.on('connect', () => {
           resolve(connection);
-        };
-        connection.onerror = () => {
-          reject(new Error('Cannot connect to Websocket'));
-        };
-        connection.onclose = () => {
+        });
+
+        connection.on('disconnect', () => {
           this.$store.dispatch('handleDisconnect');
-        };
+          reject(new Error('Disconnected'));
+        });
+
+        connection.on('reconnect', () => {
+          resolve(connection);
+        });
+
+        connection.on(eventTypes.ROOM_EXISTS, () => {
+          console.log('ROOMEXISTS');
+          this.$store.dispatch('roomExists', { roomExists: true });
+        });
       });
     },
     triggerConnection() {
       this.connect()
         .then((connection) => {
           this.$store.dispatch('handleConnection', { connection });
-        })
-        .catch(() => {
-          setTimeout(() => {
-            this.triggerConnection();
-          }, 3000);
         });
     },
   },

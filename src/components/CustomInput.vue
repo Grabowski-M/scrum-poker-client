@@ -1,13 +1,13 @@
 <template>
   <input
-      class="customInput"
-      :class="{[className]: !!className, 'customInput--disabled': disabled }"
-      :disabled="disabled"
-      :type="type"
-      :placeholder="placeholder"
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      ref="input"
+    class="customInput"
+    :class="{[className]: !!className, 'customInput--disabled': disabled }"
+    :disabled="disabled"
+    :type="type"
+    :placeholder="placeholder"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+    ref="input"
   >
 </template>
 

@@ -12,7 +12,7 @@
               :focus-on-load="true"
           />
           <custom-input
-              class="joinRoom__form__input joinRoom__form__input--secondary"
+              class-name="joinRoom__form__input joinRoom__form__input--secondary"
               type="text"
               v-model="password"
               placeholder="password (optional)"
