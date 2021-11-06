@@ -3,10 +3,10 @@
     <themer>
       <styles-reset>
         <styles-global>
-          <router-view/>
           <div v-if="connecting" class="loader-wrapper">
             <loader/>
           </div>
+          <router-view v-if="!connecting"/>
         </styles-global>
       </styles-reset>
     </themer>

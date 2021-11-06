@@ -4,7 +4,6 @@
 
 <script>
 import io from 'socket.io-client';
-import { eventTypes } from '../constants/eventTypes';
 
 export default {
   methods: {
@@ -25,9 +24,8 @@ export default {
           resolve(connection);
         });
 
-        connection.on(eventTypes.ROOM_EXISTS, () => {
-          console.log('ROOMEXISTS');
-          this.$store.dispatch('roomExists', { roomExists: true });
+        connection.on('STATE_CHANGE', (newRoomState) => {
+          this.$store.dispatch('handleRoomStateChange', { roomState: newRoomState });
         });
       });
     },

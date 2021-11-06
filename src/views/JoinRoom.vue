@@ -2,8 +2,8 @@
   <fade-in>
     <div class="joinRoom">
       <div class="joinRoom__form">
-        <h1 class="joinRoom__form__heading">Join room</h1>
-        <form @submit="joinRoom()">
+        <h1 class="joinRoom__form__heading">Create or join room</h1>
+        <form>
           <custom-input
               class-name="joinRoom__form__input"
               type="text"
@@ -12,14 +12,20 @@
               :focus-on-load="true"
           />
           <custom-input
-              class-name="joinRoom__form__input joinRoom__form__input--secondary"
-              type="text"
-              v-model="password"
-              placeholder="password (optional)"
-              disabled
+            class="joinRoom__form__input joinRoom__form__input--secondary"
+            type="text"
+            v-model="username"
+            placeholder="username"
           />
+<!--          <custom-input-->
+<!--              class-name="joinRoom__form__input joinRoom__form__input&#45;&#45;secondary"-->
+<!--              type="text"-->
+<!--              v-model="password"-->
+<!--              placeholder="password (optional)"-->
+<!--              disabled-->
+<!--          />-->
           <div class="joinRoom__form__button__wrapper">
-            <custom-button :disabled="!roomId">
+            <custom-button :disabled="!roomId || !username" type="submit" :on-click="joinRoom">
               join
             </custom-button>
           </div>
@@ -39,17 +45,33 @@ export default {
     return {
       roomId: '',
       password: '',
+      username: '',
     };
   },
   methods: {
-    joinRoom() {
+    joinRoom(e) {
+      e.preventDefault();
       this.$router.push(`/room/${this.roomId}`);
+
+      this.setUsername(this.username);
+    },
+    setUsername(username) {
+      localStorage.setItem('username', username);
+      this.username = username;
     },
   },
   components: {
     CustomInput,
     FadeIn,
     CustomButton,
+  },
+  beforeMount() {
+    const localStorageUsername = localStorage.getItem('username');
+    if (localStorageUsername) {
+      this.username = localStorageUsername;
+    }
+
+    this.roomId = this.$route.query.roomId;
   },
 };
 </script>
@@ -58,6 +80,7 @@ export default {
 .joinRoom {
   width: 100%;
   padding: 16px;
+  margin-top: 200px;
 }
 
 .joinRoom__form__heading {
@@ -100,6 +123,10 @@ export default {
 }
 
 @media screen and (max-width: 480px) {
+  .joinRoom {
+    margin-top: 40px;
+  }
+
   .joinRoom__form__input {
     padding: 16px;
     font-size: 1.6rem;

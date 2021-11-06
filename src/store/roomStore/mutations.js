@@ -3,7 +3,8 @@ export default {
     state.connection = payload.connection;
     state.connecting = payload.connecting;
   },
-  handleRoomExistsError(state, payload) {
-    state.room.roomExistsError = payload.roomExists;
+  setRoomState(state, payload) {
+    console.log({ payload });
+    state.room = payload.roomState;
   },
 };

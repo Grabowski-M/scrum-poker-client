@@ -75,7 +75,7 @@ html.dark {
 
 <style scoped>
 .themeToggle__wrapper {
-  position: absolute;
+  position: fixed;
   bottom: 16px;
   right: 16px;
 }

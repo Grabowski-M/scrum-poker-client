@@ -5,7 +5,8 @@ export default {
   handleDisconnect({ commit }) {
     commit('setConnection', { connection: null, connecting: true });
   },
-  roomExists({ commit }, { roomExists }) {
-    commit('handleRoomExistsError', { roomExists });
+  handleRoomStateChange({ commit }, { roomState }) {
+    console.log({ roomState });
+    commit('setRoomState', { roomState });
   },
 };

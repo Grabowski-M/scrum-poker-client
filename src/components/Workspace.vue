@@ -17,7 +17,6 @@ export default {
 
 <style>
 .workspace__wrapper {
-  display: flex;
   height: 100vh;
   align-items: center;
   padding: 60px 0;
@@ -27,11 +26,5 @@ export default {
 .workspace {
   width: 100%;
   margin-bottom: 200px;
-}
-
-@media screen and (max-width: 480px) {
-  .workspace__wrapper {
-    margin-top: 24px;
-  }
 }
 </style>
