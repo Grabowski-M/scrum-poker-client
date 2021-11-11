@@ -1,12 +1,15 @@
 <template>
   <ul v-if="!!room">
     <li v-for="participant in (room.participants || [])" :key="participant.username">
-      {{participant.username}}
+      {{ participant.username }}
     </li>
   </ul>
+  <timer  />
 </template>
 
 <script>
+import Timer from '../components/PokerRoom/Timer.vue';
+
 export default {
   data() {
     return {
@@ -18,6 +21,12 @@ export default {
     room() {
       return this.$store.getters.roomState;
     },
+    isLeader() {
+      return this.$store.getters.isLeader;
+    },
+  },
+  components: {
+    Timer,
   },
   beforeMount() {
     this.username = localStorage.getItem('username');

@@ -4,7 +4,8 @@ export default {
     state.connecting = payload.connecting;
   },
   setRoomState(state, payload) {
-    console.log({ payload });
+    const { roomState } = payload;
+    state.isLeader = roomState.leader === state.connection.id;
     state.room = payload.roomState;
   },
 };

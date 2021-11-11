@@ -6,6 +6,7 @@ export default {
   state: {
     connection: null,
     connecting: true,
+    isLeader: false,
     room: null,
   },
   mutations,

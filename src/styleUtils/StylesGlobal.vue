@@ -6,7 +6,7 @@
 #app {
   background: var(--background-color);
   font-size: 62.5%;
-  transition: .3s;
+  transition: 0.3s background-color;
 }
 
 html * {
@@ -20,5 +20,16 @@ body {
 
 h1 {
   font-size: 2.4rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+  -moz-appearance:textfield; /* Firefox */
 }
 </style>
