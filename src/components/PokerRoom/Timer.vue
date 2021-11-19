@@ -35,6 +35,8 @@ export default {
       e.preventDefault();
       const { connection } = this.$store.getters;
 
+      this.timerLoading = true;
+
       connection.emit('TIMER_CHANGE', { time: this.time });
     },
     resetTime(e) {
@@ -43,6 +45,24 @@ export default {
 
       connection.emit('TIMER_CHANGE', { time: null });
       this.stopCounting();
+    },
+    startCounting() {
+      const tick = () => {
+        const target = dayjs(this.targetTime);
+        const now = dayjs(new Date());
+        const diff = target.diff(now);
+
+        if (Math.floor(diff) <= 0) {
+          this.stopCounting();
+        } else {
+          this.timeToDisplay = dayjs.duration(diff).format('mm:ss');
+        }
+      };
+
+      tick();
+      this.counter = setInterval(() => {
+        tick();
+      }, 1000);
     },
     stopCounting() {
       window.clearInterval(this.counter);
@@ -62,26 +82,10 @@ export default {
     targetTime: {
       handler() {
         if (this.targetTime && !this.counter) {
-          const target = dayjs(this.targetTime);
-
-          this.counter = setInterval(() => {
-            const now = dayjs(new Date());
-            const diff = target.diff(now);
-
-            if (Math.floor(diff) <= 0) {
-              this.stopCounting();
-            } else {
-              this.timeToDisplay = dayjs.duration(diff).format('mm:ss');
-            }
-          }, 1000);
+          this.startCounting();
         }
       },
     },
-  },
-  mounted() {
-    Notification.requestPermission().then((result) => {
-      console.log(result);
-    });
   },
 };
 </script>
