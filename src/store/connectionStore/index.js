@@ -4,8 +4,8 @@ import actions from './actions';
 
 export default {
   state: {
-    isLeader: false,
-    room: null,
+    connection: null,
+    connecting: true,
   },
   mutations,
   getters,

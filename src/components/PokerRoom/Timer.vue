@@ -1,5 +1,7 @@
 <template>
-  {{ countdown }}
+  <div v-if="!!counter">
+    {{ timeToDisplay }}
+  </div>
   <form>
     <custom-input
       class-name="timer__input"
@@ -8,22 +10,24 @@
       placeholder="number of minutes"
     />
     <button class="button__submitter" type="submit" @click="submitTime"></button>
+    <button @click="resetTime">Reset</button>
   </form>
 </template>
 
 <script>
 import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
+import duration from 'dayjs/plugin/duration';
 
 import CustomInput from '../CustomInput.vue';
 
-dayjs.extend(relativeTime);
+dayjs.extend(duration);
 
 export default {
   data() {
     return {
       time: null,
-      countdown: dayjs(new Date()).to(dayjs(this.roomTimer)),
+      timeToDisplay: null,
+      counter: null,
     };
   },
   methods: {
@@ -33,19 +37,51 @@ export default {
 
       connection.emit('TIMER_CHANGE', { time: this.time });
     },
-  },
-  props: {
-    roomTimer: String,
+    resetTime(e) {
+      e.preventDefault();
+      const { connection } = this.$store.getters;
+
+      connection.emit('TIMER_CHANGE', { time: null });
+      this.stopCounting();
+    },
+    stopCounting() {
+      window.clearInterval(this.counter);
+      this.counter = null;
+      this.timeToDisplay = null;
+    },
   },
   components: {
     CustomInput,
   },
+  computed: {
+    targetTime() {
+      return this.$store.getters.roomState?.targetTime;
+    },
+  },
   watch: {
-    countdown: {
-      handler(value) {
-        console.log({ value });
+    targetTime: {
+      handler() {
+        if (this.targetTime && !this.counter) {
+          const target = dayjs(this.targetTime);
+
+          this.counter = setInterval(() => {
+            const now = dayjs(new Date());
+            const diff = target.diff(now);
+
+            if (Math.floor(diff) <= 0) {
+              this.stopCounting();
+            } else {
+              this.timeToDisplay = dayjs.duration(diff).format('mm:ss');
+            }
+          }, 1000);
+        }
       },
     },
+  },
+  mounted() {
+    Notification.requestPermission().then((result) => {
+      console.log(result);
+    });
   },
 };
 </script>

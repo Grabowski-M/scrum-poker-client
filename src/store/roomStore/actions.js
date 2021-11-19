@@ -1,12 +1,8 @@
 export default {
-  handleConnection({ commit }, { connection }) {
-    commit('setConnection', { connection, connecting: false });
+  handleRoomStateChange(context, { roomState }) {
+    context.commit('setRoomState', { context, roomState });
   },
-  handleDisconnect({ commit }) {
-    commit('setConnection', { connection: null, connecting: true });
-  },
-  handleRoomStateChange({ commit }, { roomState }) {
-    console.log({ roomState });
-    commit('setRoomState', { roomState });
+  handleRoomStateReset({ commit }) {
+    commit('resetRoomState');
   },
 };

@@ -45,6 +45,9 @@ export default {
       username: this.username,
     });
   },
+  beforeUnmount() {
+    this.$store.dispatch('handleRoomStateReset');
+  },
 };
 </script>
 

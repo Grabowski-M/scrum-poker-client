@@ -1,8 +1,10 @@
 import { createStore } from 'vuex';
-import room from './roomStore';
+import roomStore from './roomStore';
+import connectionStore from './connectionStore';
 
 export default createStore({
   modules: {
-    room,
+    roomStore,
+    connectionStore,
   },
 });
