@@ -26,7 +26,7 @@ export default {
   background: var(--accent-color);
   padding: 8px 32px;
   border: none;
-  color: white;
+  color: var(--button-font-color);
   border-radius: 4px;
   font-size: 1.6rem;
   cursor: pointer;

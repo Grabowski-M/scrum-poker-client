@@ -5,8 +5,11 @@
 <style>
 #app {
   background: var(--background-color);
-  font-size: 62.5%;
   transition: 0.3s background-color;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 html * {
@@ -15,7 +18,7 @@ html * {
 }
 
 body {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 h1 {

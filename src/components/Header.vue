@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <p class="header__button">
-      <router-link to="/">Home</router-link>
+      <router-link to="/">Scrum poker</router-link>
     </p>
   </div>
 </template>
@@ -15,7 +15,7 @@
 }
 
 .header__button {
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin-left: 16px;
 }
 

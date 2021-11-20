@@ -46,13 +46,16 @@ export default {
 <style>
 html.light {
   --background-color: #f3f3f3;
-  --font-color: #404040;
+  --font-color: #585858;
   --box-shadow-color: #dbdbdb;
   --borders-color: grey;
-  --accent-color: #4d9dea;
+  --accent-color: #5C80BC;
 
   --button-disabled-background: #d5d5d5;
   --button-background: var(--accent-color);
+  --button-font-color: white;
+  --button-secondary-background: var(--background-color);
+  --button-secondary-font-color: var(--font-color);
 
   --theme-toggle-background: #cbcbcb;
   --theme-toggle-circle-background: var(--background-color);
@@ -63,10 +66,13 @@ html.dark {
   --font-color: #cecece;
   --box-shadow-color: #282828;
   --borders-color: #393939;
-  --accent-color: #ff6600;
+  --accent-color: #5C80BC;
 
   --button-disabled-background: #242424;
   --button-background: var(--accent-color);
+  --button-font-color: white;
+  --button-secondary-background: var(--background-color);
+  --button-secondary-font-color: var(--font-color);
 
   --theme-toggle-background: white;
   --theme-toggle-circle-background: var(--background-color);
