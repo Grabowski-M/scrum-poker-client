@@ -1,6 +1,5 @@
 <template>
   <div v-if="!!room" class="pokerRoom">
-    <h1 class="pokerRoom__header">Room #{{ room.roomId }}</h1>
     <div class="pokerRoom__layout">
       <div class="pokerRoom__sidebar">
         <div class="pokerRoom__timer">
@@ -20,7 +19,8 @@
         </div>
       </div>
       <div class="pokerRoom__pokerTable">
-
+        <h1 class="pokerRoom__header">Room #{{ room.roomId }}</h1>
+        <poker-board :room="room" />
       </div>
     </div>
   </div>
@@ -28,6 +28,7 @@
 
 <script>
 import Timer from '../components/PokerRoom/Timer.vue';
+import PokerBoard from '../components/PokerRoom/PokerBoard.vue';
 
 export default {
   data() {
@@ -45,6 +46,7 @@ export default {
   },
   components: {
     Timer,
+    PokerBoard,
   },
   beforeMount() {
     this.username = localStorage.getItem('username');

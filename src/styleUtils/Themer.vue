@@ -54,11 +54,19 @@ html.light {
   --button-disabled-background: #d5d5d5;
   --button-background: var(--accent-color);
   --button-font-color: white;
-  --button-secondary-background: var(--background-color);
+  --button-secondary-background: white;
   --button-secondary-font-color: var(--font-color);
 
   --theme-toggle-background: #cbcbcb;
   --theme-toggle-circle-background: var(--background-color);
+
+  --voting-card-font-color: var(--accent-color);
+  --voting-card-hovered-font-color: white;
+  --voting-card-background-color: white;
+  --voting-card-hovered-background-color: var(--accent-color);
+  --voting-card-disabled-background-color: #d5d5d5;
+  --voting-card-disabled-font-color: white;
+  --voting-card-boxshadow-color: var(--accent-color)
 }
 
 html.dark {
@@ -71,11 +79,19 @@ html.dark {
   --button-disabled-background: #242424;
   --button-background: var(--accent-color);
   --button-font-color: white;
-  --button-secondary-background: var(--background-color);
+  --button-secondary-background: #4e4e4e;
   --button-secondary-font-color: var(--font-color);
 
   --theme-toggle-background: white;
   --theme-toggle-circle-background: var(--background-color);
+
+  --voting-card-font-color: var(--font-color);
+  --voting-card-hovered-font-color: white;
+  --voting-card-background-color: #4e4e4e;
+  --voting-card-hovered-background-color: var(--accent-color);
+  --voting-card-disabled-background-color: #3e3e3e;
+  --voting-card-disabled-font-color: white;
+  --voting-card-boxshadow-color: transparent;
 }
 </style>
 

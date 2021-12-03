@@ -147,7 +147,7 @@ export default {
   background-color: var(--button-secondary-background);
   box-shadow: 0 0 2px 1px var(--box-shadow-color);
   margin: 4px;
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--button-secondary-font-color);
   transition: .3s;
   transform: scale(1);
@@ -161,7 +161,6 @@ export default {
 .timer__counter {
   font-size: 6rem;
   transition: color 5s;
-  font-weight: bold;
   color: var(--font-color);
   text-align: center;
 }
