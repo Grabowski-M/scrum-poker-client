@@ -30,7 +30,6 @@ export default {
 }
 
 .header__button a {
-  text-decoration: none;
   color: var(--font-color);
 }
 </style>

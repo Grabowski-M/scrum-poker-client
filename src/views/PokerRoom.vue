@@ -1,20 +1,26 @@
 <template>
   <div v-if="!!room" class="pokerRoom">
-    <h1 class="pokerRoom__header">Room {{ room.roomId }}</h1>
+    <h1 class="pokerRoom__header">Room #{{ room.roomId }}</h1>
     <div class="pokerRoom__layout">
-      <div class="pokerRoom__participants">
-        <h3>Participants</h3>
-        <ul v-if="!!room">
-          <li v-for="participant in (room.participants || [])" :key="participant.username">
-            {{ participant.username }}
-          </li>
-        </ul>
+      <div class="pokerRoom__sidebar">
+        <div class="pokerRoom__timer">
+          <timer/>
+        </div>
+        <div class="pokerRoom__participants">
+          <h3>Participants</h3>
+          <ul class="pokerRoom__participants__list" v-if="!!room">
+            <li
+              class="pokerRoom__participants__item"
+              :class="participant.socketId === room.leader ? 'leader' : ''"
+              v-for="participant in (room.participants || [])" :key="participant.username"
+            >
+              {{ participant.username }}
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="pokerRoom__pokerTable">
 
-      </div>
-      <div class="pokerRoom__timer">
-        <timer/>
       </div>
     </div>
   </div>
@@ -67,7 +73,6 @@ export default {
 .pokerRoom {
   display: flex;
   flex-wrap: wrap;
-  height: calc(100vh - 60px);
 }
 
 .pokerRoom__header {
@@ -83,8 +88,29 @@ export default {
   height: 100%;
 }
 
-.pokerRoom__participants {
+.pokerRoom__sidebar {
+  display: flex;
+  flex-wrap: wrap;
   flex: 0 0 250px;
+  padding: 24px;
+}
+
+.pokerRoom__participants {
+  margin-bottom: 24px;
+  justify-content: flex-end;
+}
+
+.pokerRoom__participants__list {
+  margin-top: 8px;
+}
+
+.pokerRoom__participants__item {
+  padding: 4px 0;
+}
+
+.pokerRoom__participants__item.leader {
+  font-weight: bold;
+  color: var(--accent-color);
 }
 
 .pokerRoom__pokerTable {
@@ -93,6 +119,5 @@ export default {
 }
 
 .pokerRoom__timer {
-  flex: 0 0 250px;
 }
 </style>

@@ -129,26 +129,12 @@ export default {
 </script>
 
 <style>
-.timer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
 .timer__buttons {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   margin-top: 24px;
   color: var(--button-font-color);
 }
 
 .timer__buttons--row {
-  width: 100%;
   align-self: center;
   text-align: center;
 }
@@ -173,10 +159,11 @@ export default {
 }
 
 .timer__counter {
-  font-size: 5rem;
+  font-size: 6rem;
   transition: color 5s;
   font-weight: bold;
   color: var(--font-color);
+  text-align: center;
 }
 
 .timer__counter.warning {
