@@ -7,10 +7,12 @@
       <div class="timer__buttons--row">
         <button class="button__time" @click="(e) => submitTime(e, 1)">1 min</button>
         <button class="button__time" @click="(e) => submitTime(e, 5)">5 min</button>
-        <button class="button__time" @click="(e) => submitTime(e, 10)">10 min</button>
       </div>
       <div class="timer__buttons--row">
+        <button class="button__time" @click="(e) => submitTime(e, 10)">10 min</button>
         <button class="button__time" @click="(e) => submitTime(e, 15)">15 min</button>
+      </div>
+      <div class="timer__buttons--row">
         <button class="button__time" @click="(e) => submitTime(e, 20)">20 min</button>
         <button class="button__time" @click="resetTime">Reset</button>
       </div>
@@ -51,25 +53,33 @@ export default {
       connection.emit('TIMER_CHANGE', { time: null });
       this.stopCounting();
     },
+    changePageTitle(title) {
+      document.title = title;
+    },
     startCounting() {
+      this.stopCounting();
+
       const tick = () => {
         const target = dayjs(this.targetTime);
         const now = dayjs(new Date());
         const diff = target.diff(now);
+        const lowerThan3min = diff < 3 * 60 * 1000;
+        const lowerThanMinute = diff < 60 * 1000;
+        const countingFinished = Math.floor(diff) <= 0;
 
-        if (diff < 3 * 60 * 1000) {
+        if (lowerThan3min) {
           this.statusClassName = 'warning';
         }
 
-        if (diff < 60 * 1000) {
+        if (lowerThanMinute) {
           this.statusClassName = 'danger';
         }
 
-        if (Math.floor(diff) <= 0) {
+        if (countingFinished) {
           this.stopCounting();
         } else {
           this.timeToDisplay = dayjs.duration(diff).format('mm:ss');
-          document.title = `${this.timeToDisplay} - Scrum poker`;
+          this.changePageTitle(`${this.timeToDisplay} - Scrum poker`);
         }
       };
 
@@ -80,7 +90,7 @@ export default {
     },
     stopCounting() {
       window.clearInterval(this.counter);
-      document.title = 'Scrum poker';
+      this.changePageTitle('Scrum poker');
       this.counter = null;
       this.timeToDisplay = null;
       this.statusClassName = '';
@@ -93,6 +103,16 @@ export default {
     isLeader() {
       return this.$store.getters.isLeader;
     },
+  },
+  mounted() {
+    const target = dayjs(this.targetTime);
+    const now = dayjs(new Date());
+    const diff = target.diff(now);
+    const shouldBeCounting = this.targetTime && Math.floor(diff) > 0 && !this.counter;
+
+    if (shouldBeCounting) {
+      this.startCounting();
+    }
   },
   watch: {
     targetTime: {

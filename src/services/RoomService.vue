@@ -25,7 +25,6 @@ export default {
         });
 
         connection.on('STATE_CHANGE', (newRoomState) => {
-          console.log({ newRoomState });
           this.$store.dispatch('handleRoomStateChange', { roomState: newRoomState });
         });
       });

@@ -1,10 +1,20 @@
 <template>
   <div class="header">
     <p class="header__button">
-      <router-link to="/">Scrum poker</router-link>
+      <router-link v-if="routePath !== '/'" to="/">Back</router-link>
     </p>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    routePath() {
+      return this.$route.fullPath;
+    },
+  },
+};
+</script>
 
 <style>
 .header {

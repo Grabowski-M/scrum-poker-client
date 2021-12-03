@@ -21,10 +21,10 @@ p {
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  margin: 3px;
+  margin: 2px;
   background: var(--font-color) ;
   animation: fade infinite;
   animation-duration: 1500ms;

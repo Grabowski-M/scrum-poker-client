@@ -1,10 +1,23 @@
 <template>
-  <ul v-if="!!room">
-    <li v-for="participant in (room.participants || [])" :key="participant.username">
-      {{ participant.username }}
-    </li>
-  </ul>
-  <timer  />
+  <div v-if="!!room" class="pokerRoom">
+    <h1 class="pokerRoom__header">Room {{ room.roomId }}</h1>
+    <div class="pokerRoom__layout">
+      <div class="pokerRoom__participants">
+        <h3>Participants</h3>
+        <ul v-if="!!room">
+          <li v-for="participant in (room.participants || [])" :key="participant.username">
+            {{ participant.username }}
+          </li>
+        </ul>
+      </div>
+      <div class="pokerRoom__pokerTable">
+
+      </div>
+      <div class="pokerRoom__timer">
+        <timer/>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,7 +27,6 @@ export default {
   data() {
     return {
       username: '',
-      roomId: '',
     };
   },
   computed: {
@@ -52,4 +64,35 @@ export default {
 </script>
 
 <style>
+.pokerRoom {
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100vh - 60px);
+}
+
+.pokerRoom__header {
+  text-align: center;
+  width: 100%;
+  margin: 16px 0 40px;
+  font-weight: normal;
+}
+
+.pokerRoom__layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.pokerRoom__participants {
+  flex: 0 0 250px;
+}
+
+.pokerRoom__pokerTable {
+  height: 400px;
+  width: 100%;
+}
+
+.pokerRoom__timer {
+  flex: 0 0 250px;
+}
 </style>
