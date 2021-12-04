@@ -6,6 +6,7 @@ export default {
   state: {
     isLeader: false,
     room: null,
+    cards: null,
   },
   mutations,
   getters,

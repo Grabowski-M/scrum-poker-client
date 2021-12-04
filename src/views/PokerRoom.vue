@@ -76,6 +76,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  position: relative;
 }
 
 .pokerRoom__header {
@@ -95,7 +96,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex: 0 0 250px;
-  padding: 24px 24px 0 24px;
+  padding: 16px 16px 0 16px;
 }
 
 .pokerRoom__participants {
@@ -117,8 +118,10 @@ export default {
 }
 
 .pokerRoom__pokerTable {
-  height: 100%;
   width: 100%;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .pokerRoom__timer {

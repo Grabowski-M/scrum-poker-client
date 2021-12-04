@@ -7,4 +7,8 @@ export default {
   resetRoomState(state) {
     state.room = null;
   },
+  showCards(state, payload) {
+    const { cards } = payload;
+    state.cards = cards;
+  },
 };

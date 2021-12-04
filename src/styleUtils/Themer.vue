@@ -90,7 +90,7 @@ html.dark {
   --voting-card-background-color: #4e4e4e;
   --voting-card-hovered-background-color: var(--accent-color);
   --voting-card-disabled-background-color: #3e3e3e;
-  --voting-card-disabled-font-color: white;
+  --voting-card-disabled-font-color: #5f5f5f;
   --voting-card-boxshadow-color: transparent;
 }
 </style>

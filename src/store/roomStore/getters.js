@@ -5,4 +5,7 @@ export default {
   isLeader(state) {
     return state.isLeader;
   },
+  cards(state) {
+    return state.cards;
+  },
 };

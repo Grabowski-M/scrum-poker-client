@@ -53,7 +53,9 @@ export default {
 }
 
 .votingCard:hover,
-.votingCard.active {
+.votingCard.active,
+.votingCard.active.disabled,
+.votingCard.active.disabled:hover {
   background: var(--voting-card-hovered-background-color);
   color: var(--voting-card-hovered-font-color);
   box-shadow: 2px 2px 5px 1px var(--voting-card-boxshadow-color);

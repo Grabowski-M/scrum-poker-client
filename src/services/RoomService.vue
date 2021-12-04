@@ -27,6 +27,10 @@ export default {
         connection.on('STATE_CHANGE', (newRoomState) => {
           this.$store.dispatch('handleRoomStateChange', { roomState: newRoomState });
         });
+
+        connection.on('SHOW_CARDS', (cards) => {
+          this.$store.dispatch('handleShowCards', { cards });
+        });
       });
     },
     triggerConnection() {

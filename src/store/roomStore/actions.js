@@ -5,4 +5,7 @@ export default {
   handleRoomStateReset({ commit }) {
     commit('resetRoomState');
   },
+  handleShowCards({ commit }, { cards }) {
+    commit('showCards', { cards });
+  },
 };
