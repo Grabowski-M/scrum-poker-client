@@ -2,9 +2,6 @@
   <div v-if="!!room" class="pokerRoom">
     <div class="pokerRoom__layout">
       <div class="pokerRoom__sidebar">
-        <div class="pokerRoom__timer">
-          <timer/>
-        </div>
         <div class="pokerRoom__participants">
           <h3>Participants</h3>
           <ul class="pokerRoom__participants__list" v-if="!!room">
@@ -16,6 +13,9 @@
               {{ participant.username }}
             </li>
           </ul>
+        </div>
+        <div class="pokerRoom__timer">
+          <timer/>
         </div>
       </div>
       <div class="pokerRoom__pokerTable">
@@ -75,6 +75,7 @@ export default {
 .pokerRoom {
   display: flex;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .pokerRoom__header {
@@ -94,7 +95,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex: 0 0 250px;
-  padding: 24px;
+  padding: 24px 24px 0 24px;
 }
 
 .pokerRoom__participants {
@@ -116,10 +117,11 @@ export default {
 }
 
 .pokerRoom__pokerTable {
-  height: 400px;
+  height: 100%;
   width: 100%;
 }
 
 .pokerRoom__timer {
+  align-self: flex-end;
 }
 </style>

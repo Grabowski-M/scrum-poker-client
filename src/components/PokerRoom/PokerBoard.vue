@@ -39,5 +39,6 @@ export default {
   flex-wrap: nowrap;
   width: 100%;
   justify-content: center;
+  align-self: flex-end;
 }
 </style>

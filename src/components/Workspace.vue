@@ -26,5 +26,6 @@ export default {
 .workspace {
   width: 100%;
   margin-bottom: 200px;
+  height: 100%;
 }
 </style>
