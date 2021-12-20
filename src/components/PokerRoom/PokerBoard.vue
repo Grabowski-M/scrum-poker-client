@@ -40,6 +40,7 @@ export default {
     },
     startVoting() {
       const { connection } = this.$store.getters;
+      this.$store.dispatch('handleStartVoting');
       connection.emit('START_VOTING');
     },
   },
@@ -54,7 +55,22 @@ export default {
   components: {
     VotingCard,
   },
+  mounted() {
+    const { connection } = this.$store.getters;
+    connection.on('RESET_CARDS', () => {
+      this.activeCard = null;
+    });
+  },
   props: ['room'],
+  watch: {
+    cards: {
+      handler() {
+        if (this.cards === null) {
+          this.activeCard = null;
+        }
+      },
+    },
+  },
 };
 </script>
 

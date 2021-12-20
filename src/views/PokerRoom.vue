@@ -3,7 +3,13 @@
     <div class="pokerRoom__layout">
       <div class="pokerRoom__sidebar">
         <div class="pokerRoom__participants">
-          <h3>Participants</h3>
+          <h3>
+            {{
+              participantsNumber > 1
+                ? `${participantsNumber} participants`
+                : `${participantsNumber} participant`
+            }}
+          </h3>
           <ul class="pokerRoom__participants__list" v-if="!!room">
             <li
               class="pokerRoom__participants__item"
@@ -20,7 +26,7 @@
       </div>
       <div class="pokerRoom__pokerTable">
         <h1 class="pokerRoom__header">Room #{{ room.roomId }}</h1>
-        <poker-board :room="room" />
+        <poker-board :room="room"/>
       </div>
     </div>
   </div>
@@ -42,6 +48,9 @@ export default {
     },
     isLeader() {
       return this.$store.getters.isLeader;
+    },
+    participantsNumber() {
+      return this.room?.participants?.length;
     },
   },
   components: {

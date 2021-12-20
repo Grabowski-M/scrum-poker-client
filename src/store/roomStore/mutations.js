@@ -11,4 +11,7 @@ export default {
     const { cards } = payload;
     state.cards = cards;
   },
+  startVoting(state) {
+    state.cards = null;
+  },
 };

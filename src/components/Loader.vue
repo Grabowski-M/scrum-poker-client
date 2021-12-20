@@ -14,7 +14,7 @@
 }
 
 p {
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: bold;
   margin-right: 4px;
   line-height: 26px;

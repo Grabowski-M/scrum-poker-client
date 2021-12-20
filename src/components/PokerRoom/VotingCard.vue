@@ -22,16 +22,16 @@ export default {
 <style>
 .votingCard {
   width: 100%;
-  max-width: 60px;
+  max-width: 40px;
   margin: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  height: 100px;
+  height: 60px;
   cursor: pointer;
   background: var(--voting-card-background-color);
-  font-size: 2.5rem;
+  font-size: 2rem;
   transition: .3s;
   color: var(--voting-card-font-color);
   box-shadow: 0 0 4px -1px var(--voting-card-boxshadow-color);
