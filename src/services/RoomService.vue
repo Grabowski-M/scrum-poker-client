@@ -9,7 +9,7 @@ export default {
   methods: {
     connect() {
       return new Promise((resolve, reject) => {
-        const connection = io('http://localhost:3011');
+        const connection = io(process.env.VUE_APP_BACKEND_URL);
 
         connection.on('connect', () => {
           resolve(connection);
