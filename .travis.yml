@@ -1,0 +1,17 @@
+language: node_js
+
+cache:
+  yarn: true
+
+jobs:
+  include:
+    - stage: Deploy to Github pages
+      name: Deploy to Github pages
+      if: branch = master AND (NOT type = pull_request)
+#      env:
+      script:
+        - yarn run build
+      deploy:
+        provider: script
+        script: yarn run deploy
+        skip_cleanup: true
