@@ -1,6 +1,6 @@
 <template>
   <div class="timer">
-    <div class="timer__counter" :class="statusClassName">
+    <div v-if="isLeader || !!counter" class="timer__counter" :class="statusClassName">
       {{ counter ? timeToDisplay : '00:00' }}
     </div>
     <div v-if="isLeader" class="timer__buttons">
