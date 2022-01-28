@@ -3,15 +3,12 @@ language: node_js
 cache:
   yarn: true
 
-jobs:
-  include:
-    - stage: Deploy to Github pages
-      name: Deploy to Github pages
-      if: branch = master AND (NOT type = pull_request)
-      script:
-        - yarn run build
-      deploy:
-        provider: script
-        script: yarn run deploy
-        skip_cleanup: true
-        github_token: $gh_token
+script:
+  - yarn run build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $gh_token
+  local_dir: dist
+  on:
+    branch: master
