@@ -66,7 +66,10 @@ html.light {
   --voting-card-hovered-background-color: var(--accent-color);
   --voting-card-disabled-background-color: #d5d5d5;
   --voting-card-disabled-font-color: white;
-  --voting-card-boxshadow-color: var(--accent-color)
+  --voting-card-boxshadow-color: var(--accent-color);
+
+  --vote-font-color: var(--accent-color);
+  --vote-background-color: white;
 }
 
 html.dark {
@@ -92,6 +95,8 @@ html.dark {
   --voting-card-disabled-background-color: #3e3e3e;
   --voting-card-disabled-font-color: #5f5f5f;
   --voting-card-boxshadow-color: transparent;
+  --vote-font-color: var(--accent-color);
+  --vote-background-color: #1c1c1c;
 }
 </style>
 

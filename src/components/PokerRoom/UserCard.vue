@@ -47,7 +47,8 @@ export default {
 
 .userCard__username {
   text-align: center;
-  margin-top: 8px;
+  margin-top: 16px;
   font-size: 1.6rem;
+  font-weight: bold;
 }
 </style>

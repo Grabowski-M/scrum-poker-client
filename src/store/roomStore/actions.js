@@ -8,7 +8,7 @@ export default {
   handleShowCards({ commit }, { cards }) {
     commit('showCards', { cards });
   },
-  handleStartVoting({ commit }) {
+  handleResetCards({ commit }) {
     commit('startVoting');
   },
 };
