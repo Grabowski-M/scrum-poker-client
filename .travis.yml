@@ -3,6 +3,9 @@ language: node_js
 cache:
   yarn: true
 
+env:
+  - VUE_APP_BACKEND_URL=https://scrum-poker-backend.herokuapp.com
+
 script:
   - yarn run build
 deploy:
@@ -10,7 +13,5 @@ deploy:
   skip_cleanup: true
   github_token: $gh_token
   local_dir: dist
-  env:
-    - VUE_APP_BACKEND_URL=https://scrum-poker-backend.herokuapp.com
   on:
     branch: master
