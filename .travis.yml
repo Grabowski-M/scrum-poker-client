@@ -3,9 +3,6 @@ language: node_js
 cache:
   yarn: true
 
-env:
-  - VUE_APP_BACKEND_URL=https://scrum-poker-backend.herokuapp.com
-
 script:
   - yarn run build
 deploy:
