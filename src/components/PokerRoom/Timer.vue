@@ -1,8 +1,5 @@
 <template>
   <div class="timer">
-    <div v-if="isLeader || !!counter" class="timer__counter" :class="statusClassName">
-      {{ counter ? timeToDisplay : '00:00' }}
-    </div>
     <div v-if="isLeader" class="timer__buttons">
       <div class="timer__buttons--row">
         <button class="button__time" @click="(e) => submitTime(e, 1)">1 min</button>
@@ -16,6 +13,12 @@
         <button class="button__time" @click="(e) => submitTime(e, 20)">20 min</button>
         <button class="button__time" @click="resetTime">Reset</button>
       </div>
+    </div>
+    <div v-else class="timer__buttons">
+      You need to be the room leader to start or reset the timer
+    </div>
+    <div v-if="isLeader || !!counter" class="timer__counter" :class="statusClassName">
+      {{ counter ? timeToDisplay : '00:00' }}
     </div>
   </div>
 </template>
@@ -129,9 +132,16 @@ export default {
 </script>
 
 <style>
+.timer:hover .timer__buttons {
+  opacity: 1;
+}
+
 .timer__buttons {
-  margin-top: 24px;
-  color: var(--button-font-color);
+  margin-bottom: 16px;
+  color: var(--button-secondary-font-color);
+  opacity: 0;
+  transition: 0.3s;
+  text-align: center;
 }
 
 .timer__buttons--row {

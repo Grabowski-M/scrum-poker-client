@@ -26,6 +26,24 @@
       </div>
       <div class="pokerRoom__pokerTable">
         <h1 class="pokerRoom__header">Room #{{ room.roomId }}</h1>
+        <div class="pokerRoom__control" v-if="isLeader">
+          <custom-button
+            :class-name="'pokerRoom__control__button'"
+            :on-click="startVoting"
+            custom-type="outlined"
+            :disabled="room.voting"
+          >
+            start voting
+          </custom-button>
+          <custom-button
+            :on-click="showCards"
+            custom-type="outlined"
+            class-name="'pokerRoom__control__button'"
+            :disabled="!room.voting"
+          >
+            show cards
+          </custom-button>
+        </div>
         <poker-board :room="room"/>
       </div>
     </div>
@@ -35,12 +53,24 @@
 <script>
 import Timer from '../components/PokerRoom/Timer.vue';
 import PokerBoard from '../components/PokerRoom/PokerBoard.vue';
+import CustomButton from '../components/CustomButton.vue';
 
 export default {
   data() {
     return {
       username: '',
     };
+  },
+  methods: {
+    startVoting() {
+      const { connection } = this.$store.getters;
+      this.$store.dispatch('handleResetCards');
+      connection.emit('START_VOTING');
+    },
+    showCards() {
+      const { connection } = this.$store.getters;
+      connection.emit('STOP_VOTING');
+    },
   },
   computed: {
     room() {
@@ -54,6 +84,7 @@ export default {
     },
   },
   components: {
+    CustomButton,
     Timer,
     PokerBoard,
   },
@@ -105,7 +136,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex: 0 0 250px;
-  padding: 16px 16px 0 16px;
+  padding: 16px;
 }
 
 .pokerRoom__participants {
@@ -135,5 +166,13 @@ export default {
 
 .pokerRoom__timer {
   align-self: flex-end;
+}
+
+.pokerRoom__control {
+  text-align: center;
+}
+
+.pokerRoom__control__button {
+  margin: 0 8px;
 }
 </style>

@@ -1,10 +1,14 @@
 <template>
   <button
-      class="customButton"
-      :class="{[className]: !!className, 'customButton--disabled': disabled }"
-      :disabled="disabled"
-      :type="type"
-      @click="onClick"
+    class="customButton"
+    :class="{
+      [className]: !!className,
+      'customButton--disabled': disabled,
+      'customButton--outlined': customType === 'outlined' && !disabled
+    }"
+    :disabled="!!disabled"
+    :type="type"
+    @click="onClick"
   >
     <slot/>
   </button>
@@ -17,6 +21,7 @@ export default {
     disabled: Boolean,
     type: String,
     onClick: Function,
+    customType: String,
   },
 };
 </script>
@@ -25,12 +30,12 @@ export default {
 .customButton {
   background: var(--accent-color);
   padding: 8px 32px;
-  border: none;
   color: var(--button-font-color);
   border-radius: 4px;
   font-size: 1.6rem;
   cursor: pointer;
   transition: .3s;
+  border: 1px solid transparent
 }
 
 .customButton--disabled {
@@ -38,4 +43,14 @@ export default {
   cursor: not-allowed;
 }
 
+.customButton--outlined {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.customButton--outlined:hover {
+  background: var(--accent-color);
+  color: var(--button-font-color);
+}
 </style>

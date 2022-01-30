@@ -20,10 +20,6 @@
           :active="availableCard === this.activeCard"
         />
       </div>
-      <div class="" v-if="isLeader">
-        <button @click="startVoting">Start voting</button>
-        <button @click="showCards">Show cards</button>
-      </div>
     </div>
   </div>
 </template>
@@ -45,15 +41,6 @@ export default {
         connection.emit('CARD_CHANGE', { card });
         this.activeCard = card;
       }
-    },
-    startVoting() {
-      const { connection } = this.$store.getters;
-      this.$store.dispatch('handleResetCards');
-      connection.emit('START_VOTING');
-    },
-    showCards() {
-      const { connection } = this.$store.getters;
-      connection.emit('STOP_VOTING');
     },
   },
   computed: {
@@ -123,6 +110,6 @@ export default {
 
 .votingCards {
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 }
 </style>

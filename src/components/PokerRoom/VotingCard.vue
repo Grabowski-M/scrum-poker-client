@@ -2,7 +2,7 @@
   <div
     class="votingCard"
     :class="{ disabled, active }"
-    :onclick="() => this.changeActiveCard(value)"
+    @click="() => this.changeActiveCard(value)"
   >
     {{ value }}
   </div>

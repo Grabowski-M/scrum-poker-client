@@ -96,7 +96,7 @@ html.dark {
   --voting-card-disabled-font-color: #5f5f5f;
   --voting-card-boxshadow-color: transparent;
   --vote-font-color: var(--accent-color);
-  --vote-background-color: #1c1c1c;
+  --vote-background-color: #282828;
 }
 </style>
 
@@ -105,6 +105,13 @@ html.dark {
   position: fixed;
   bottom: 16px;
   right: 16px;
+  opacity: 0.3;
+  transition: 0.3s;
+  z-index: 9;
+}
+
+.themeToggle__wrapper:hover {
+  opacity: 1;
 }
 
 .themeToggle {

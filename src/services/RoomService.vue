@@ -9,7 +9,6 @@ export default {
   methods: {
     connect() {
       return new Promise((resolve, reject) => {
-        console.log(process.env);
         const connection = io(process.env.VUE_APP_BACKEND_URL);
 
         connection.on('connect', () => {

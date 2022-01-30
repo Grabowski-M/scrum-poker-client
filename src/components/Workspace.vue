@@ -19,7 +19,7 @@ export default {
 .workspace__wrapper {
   height: 100vh;
   align-items: center;
-  padding: 60px 0;
+  padding: 60px 0 0;
   margin-top: -60px;
 }
 
