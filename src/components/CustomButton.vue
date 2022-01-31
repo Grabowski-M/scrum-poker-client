@@ -41,6 +41,7 @@ export default {
 .customButton--disabled {
   background: var(--button-disabled-background);
   cursor: not-allowed;
+  color: var(--button-disabled-color);
 }
 
 .customButton--outlined {

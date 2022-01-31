@@ -45,6 +45,10 @@ export default {
 
 <style>
 html.light {
+  background: #F4F4F4;
+  background: -webkit-linear-gradient(top left, #F4F4F4, #DBDBDB);
+  background: -moz-linear-gradient(top left, #F4F4F4, #DBDBDB);
+  background: linear-gradient(to bottom right, #F4F4F4, #DBDBDB);
   --background-color: #f3f3f3;
   --font-color: #585858;
   --box-shadow-color: #dbdbdb;
@@ -52,6 +56,7 @@ html.light {
   --accent-color: #5C80BC;
 
   --button-disabled-background: #d5d5d5;
+  --button-disabled-color: grey;
   --button-background: var(--accent-color);
   --button-font-color: white;
   --button-secondary-background: white;
@@ -73,6 +78,10 @@ html.light {
 }
 
 html.dark {
+  background: #313131;
+  background: -webkit-linear-gradient(bottom right, #313131, #4A4A4A);
+  background: -moz-linear-gradient(bottom right, #313131, #4A4A4A);
+  background: linear-gradient(to top left, #313131, #4A4A4A);
   --background-color: #313131;
   --font-color: #cecece;
   --box-shadow-color: #282828;
@@ -80,6 +89,7 @@ html.dark {
   --accent-color: #5C80BC;
 
   --button-disabled-background: #242424;
+  --button-disabled-color: grey;
   --button-background: var(--accent-color);
   --button-font-color: white;
   --button-secondary-background: #4e4e4e;
@@ -103,7 +113,7 @@ html.dark {
 <style scoped>
 .themeToggle__wrapper {
   position: fixed;
-  bottom: 16px;
+  top: 16px;
   right: 16px;
   opacity: 0.3;
   transition: 0.3s;

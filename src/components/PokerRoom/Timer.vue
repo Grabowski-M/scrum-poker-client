@@ -1,24 +1,22 @@
 <template>
   <div class="timer">
+    <div v-if="isLeader || !!counter" class="timer__counter" :class="statusClassName">
+      {{ counter ? timeToDisplay : '00:00' }}
+    </div>
     <div v-if="isLeader" class="timer__buttons">
       <div class="timer__buttons--row">
         <button class="button__time" @click="(e) => submitTime(e, 1)">1 min</button>
         <button class="button__time" @click="(e) => submitTime(e, 5)">5 min</button>
-      </div>
-      <div class="timer__buttons--row">
         <button class="button__time" @click="(e) => submitTime(e, 10)">10 min</button>
-        <button class="button__time" @click="(e) => submitTime(e, 15)">15 min</button>
       </div>
       <div class="timer__buttons--row">
+        <button class="button__time" @click="(e) => submitTime(e, 15)">15 min</button>
         <button class="button__time" @click="(e) => submitTime(e, 20)">20 min</button>
         <button class="button__time" @click="resetTime">Reset</button>
       </div>
     </div>
     <div v-else class="timer__buttons">
       You need to be the room leader to start or reset the timer
-    </div>
-    <div v-if="isLeader || !!counter" class="timer__counter" :class="statusClassName">
-      {{ counter ? timeToDisplay : '00:00' }}
     </div>
   </div>
 </template>
@@ -136,6 +134,11 @@ export default {
   opacity: 1;
 }
 
+.timer {
+  justify-content: center;
+  min-width: 270px;
+}
+
 .timer__buttons {
   margin-bottom: 16px;
   color: var(--button-secondary-font-color);
@@ -182,6 +185,12 @@ export default {
 .timer__counter.danger {
   color: #ff5858;
   animation: pulsate 2s infinite;
+}
+
+@media screen and (max-width: 720px) {
+  .timer__buttons {
+    opacity: 1;
+  }
 }
 
 @keyframes pulsate {

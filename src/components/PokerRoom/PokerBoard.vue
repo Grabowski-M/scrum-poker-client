@@ -10,7 +10,7 @@
         />
     </div>
     <div class="bottomSection">
-      <div class="votingCards">
+      <div class="bottomSection__votingCards">
         <voting-card
           v-for="availableCard in room.availableCards"
           :changeActiveCard="changeActiveCard"
@@ -20,6 +20,9 @@
           :active="availableCard === this.activeCard"
         />
       </div>
+      <div class="bottomSection__timer">
+        <timer/>
+      </div>
     </div>
   </div>
 </template>
@@ -27,6 +30,7 @@
 <script>
 import VotingCard from './VotingCard.vue';
 import UserCard from './UserCard.vue';
+import Timer from './Timer.vue';
 
 export default {
   data() {
@@ -62,6 +66,7 @@ export default {
   components: {
     UserCard,
     VotingCard,
+    Timer,
   },
   mounted() {
     const { connection } = this.$store.getters;
@@ -97,7 +102,11 @@ export default {
   align-items: center;
 }
 
-.votingCards {
+.bottomSection__timer {
+  margin: 16px auto 0;
+}
+
+.bottomSection__votingCards {
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
@@ -106,10 +115,8 @@ export default {
 }
 
 .bottomSection {
-}
-
-.votingCards {
-  width: 100%;
-  margin-bottom: 16px;
+  display: flex;
+  padding: 16px;
+  flex-wrap: wrap;
 }
 </style>
