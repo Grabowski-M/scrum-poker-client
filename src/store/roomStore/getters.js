@@ -5,6 +5,9 @@ export default {
   isLeader(state) {
     return state.isLeader;
   },
+  leaderId(state) {
+    return state.room.leader;
+  },
   cards(state) {
     return state.cards;
   },

@@ -1,5 +1,17 @@
 <template>
   <div class="userCard">
+    <BaseIcon
+      v-if="participantIsLeader"
+      name="crown"
+      class="userCard__icon userCard__icon--leader"
+    />
+    <i @click="() => promoteToLeader()">
+      <BaseIcon
+        v-if="!participantIsLeader && isLeader"
+        name="doubleChevronUp"
+        class="userCard__icon userCard__icon--promote"
+      />
+    </i>
     <div class="userCard__vote" :class="{ 'finished': votingFinished }">
       {{ cardValue === undefined ? "?" : cardValue }}
     </div>
@@ -10,11 +22,17 @@
 </template>
 
 <script>
+import BaseIcon from '../icons/BaseIcon.vue';
+
 export default {
+  components: { BaseIcon },
   props: {
     cardValue: [Number, String],
     username: String,
     votingFinished: Boolean,
+    participantIsLeader: Boolean,
+    isLeader: Boolean,
+    promoteToLeader: Function,
   },
 };
 </script>
@@ -26,6 +44,37 @@ export default {
   max-width: 120px;
   height: 170px;
   margin: 12px;
+}
+
+.userCard__icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  stroke: var(--accent-color);
+  padding: 4px;
+}
+
+.userCard__icon--leader {
+  fill: var(--accent-color);
+  width: 20px;
+  height: 20px;
+}
+
+.userCard__icon--promote {
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0.2;
+}
+
+.userCard:hover .userCard__icon--promote {
+  opacity: 1;
+}
+
+.userCard__icon--promote:hover {
+  transform: scale(1.15);
 }
 
 .userCard__vote {

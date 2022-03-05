@@ -3,10 +3,13 @@
     <div class="votes">
         <user-card
           v-for="participant in participants"
+          :participantIsLeader="participant.socketId === leaderId"
+          :is-leader="isLeader"
           :key="participant.socketId"
           :card-value="participant.card === undefined ? '?' : participant.card"
           :username="participant.username"
           :voting-finished="!room.voting"
+          :promote-to-leader="() => promoteToLeader(participant.socketId)"
         />
     </div>
     <div class="bottomSection">
@@ -46,10 +49,17 @@ export default {
         this.activeCard = card;
       }
     },
+    promoteToLeader(participantId) {
+      const { connection } = this.$store.getters;
+      connection.emit('PROMOTE_TO_LEADER', { participantId });
+    },
   },
   computed: {
     isLeader() {
       return this.$store.getters.isLeader;
+    },
+    leaderId() {
+      return this.$store.getters.leaderId;
     },
     cards() {
       return this.$store.getters.cards;
