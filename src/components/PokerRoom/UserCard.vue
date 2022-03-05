@@ -1,7 +1,7 @@
 <template>
   <div class="userCard">
     <div class="userCard__vote" :class="{ 'finished': votingFinished }">
-      {{ cardValue ? cardValue : "?" }}
+      {{ cardValue === undefined ? "?" : cardValue }}
     </div>
     <div class="userCard__username">
       {{ username }}

@@ -4,7 +4,7 @@
         <user-card
           v-for="participant in participants"
           :key="participant.socketId"
-          :card-value="participant.card ? participant.card : '?'"
+          :card-value="participant.card === undefined ? '?' : participant.card"
           :username="participant.username"
           :voting-finished="!room.voting"
         />

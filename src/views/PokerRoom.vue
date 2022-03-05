@@ -80,6 +80,15 @@ export default {
   beforeUnmount() {
     this.$store.dispatch('handleRoomStateReset');
   },
+  watch: {
+    room(newRoom, oldRoom) {
+      if (oldRoom && oldRoom.voting && !newRoom.voting) {
+        const bell = new Audio('/bell.mp3');
+        bell.volume = 0.5;
+        bell.play();
+      }
+    },
+  },
 };
 </script>
 
