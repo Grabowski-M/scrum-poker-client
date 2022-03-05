@@ -66,7 +66,7 @@ export default {
   cursor: pointer;
   transform: scale(1);
   transition: transform 0.3s, opacity 0.3s;
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .userCard:hover .userCard__icon--promote {

@@ -83,7 +83,7 @@ export default {
   watch: {
     room(newRoom, oldRoom) {
       if (oldRoom && oldRoom.voting && !newRoom.voting) {
-        const bell = new Audio('/bell.mp3');
+        const bell = new Audio('/notification.mp3');
         bell.volume = 0.5;
         bell.play();
       }
