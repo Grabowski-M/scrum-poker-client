@@ -7,11 +7,17 @@ import io from 'socket.io-client';
 
 export default {
   methods: {
+    startKeepingHerokuAwake() {
+      setInterval(() => {
+        fetch(`${process.env.VUE_APP_BACKEND_URL}/health`);
+      }, 5 * 60 * 1000); // 5 minutes
+    },
     connect() {
       return new Promise((resolve, reject) => {
         const connection = io(process.env.VUE_APP_BACKEND_URL);
 
         connection.on('connect', () => {
+          this.startKeepingHerokuAwake();
           resolve(connection);
         });
 

@@ -5,7 +5,7 @@
         <h1 class="pokerRoom__header">Room #{{ room.roomId }}</h1>
         <div class="pokerRoom__control" v-if="isLeader">
           <custom-button
-            :class-name="'pokerRoom__control__button'"
+            class-name="pokerRoom__control__button"
             :on-click="startVoting"
             custom-type="outlined"
             :disabled="room.voting"
@@ -15,7 +15,7 @@
           <custom-button
             :on-click="showCards"
             custom-type="outlined"
-            class-name="'pokerRoom__control__button'"
+            class-name="pokerRoom__control__button"
             :disabled="!room.voting"
           >
             show cards

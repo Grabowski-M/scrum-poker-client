@@ -6,7 +6,7 @@
           :participantIsLeader="participant.socketId === leaderId"
           :is-leader="isLeader"
           :key="participant.socketId"
-          :card-value="participant.card === undefined ? '?' : participant.card"
+          :card="participant.card"
           :username="participant.username"
           :voting-finished="!room.voting"
           :promote-to-leader="() => promoteToLeader(participant.socketId)"

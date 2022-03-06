@@ -50,7 +50,7 @@ html.light {
   background: -moz-linear-gradient(top left, #F4F4F4, #DBDBDB);
   background: linear-gradient(to bottom right, #F4F4F4, #DBDBDB);
   --background-color: #f3f3f3;
-  --font-color: #585858;
+  --font-color: #696969;
   --box-shadow-color: #dbdbdb;
   --borders-color: grey;
   --accent-color: #5C80BC;
