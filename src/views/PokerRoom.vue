@@ -84,7 +84,7 @@ export default {
     room(newRoom, oldRoom) {
       if (oldRoom && oldRoom.voting && !newRoom.voting) {
         const bell = new Audio('/notification.mp3');
-        bell.volume = 0.5;
+        bell.volume = 0.2;
         bell.play();
       }
     },
