@@ -83,9 +83,12 @@ export default {
   watch: {
     room(newRoom, oldRoom) {
       if (oldRoom && oldRoom.voting && !newRoom.voting) {
-        const bell = new Audio('/notification.mp3');
-        bell.volume = 0.2;
-        bell.play();
+        const muted = JSON.parse(localStorage.getItem('muted'));
+        if (!muted) {
+          const bell = new Audio('/notification.mp3');
+          bell.volume = 0.2;
+          bell.play();
+        }
       }
     },
   },

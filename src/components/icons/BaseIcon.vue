@@ -13,6 +13,8 @@ import HomeIcon from './assets/HomeIcon.vue';
 import ArrowLeftIcon from './assets/ArrowLeft.vue';
 import CrownIcon from './assets/CrownIcon.vue';
 import DoubleChevronUpIcon from './assets/DoubleChevronUpIcon.vue';
+import VolumeOff from './assets/VolumeOff.vue';
+import VolumeUp from './assets/VolumeUp.vue';
 
 const icons = {
   star: StarIcon,
@@ -20,6 +22,8 @@ const icons = {
   arrowLeft: ArrowLeftIcon,
   crown: CrownIcon,
   doubleChevronUp: DoubleChevronUpIcon,
+  volumeOff: VolumeOff,
+  volumeUp: VolumeUp,
 };
 
 export default {

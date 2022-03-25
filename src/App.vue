@@ -7,6 +7,7 @@
             <loader/>
           </div>
           <router-view v-if="!connecting"/>
+          <settings-bar />
         </styles-global>
       </styles-reset>
     </themer>
@@ -19,6 +20,7 @@ import StylesReset from './styleUtils/StylesReset.vue';
 import StylesGlobal from './styleUtils/StylesGlobal.vue';
 import RoomService from './services/RoomService.vue';
 import Loader from './components/Loader.vue';
+import SettingsBar from './components/SettingsBar.vue';
 
 export default {
   components: {
@@ -27,6 +29,7 @@ export default {
     StylesGlobal,
     StylesReset,
     Themer,
+    SettingsBar,
   },
   computed: {
     connecting() {
