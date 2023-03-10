@@ -8,20 +8,18 @@
             class-name="pokerRoom__control__button"
             :on-click="startVoting"
             custom-type="outlined"
-            :disabled="room.voting"
-          >
+            :disabled="room.voting">
             start voting
           </custom-button>
           <custom-button
             :on-click="showCards"
             custom-type="outlined"
             class-name="pokerRoom__control__button"
-            :disabled="!room.voting"
-          >
+            :disabled="!room.voting">
             show cards
           </custom-button>
         </div>
-        <poker-board :room="room"/>
+        <poker-board :room="room" />
       </div>
     </div>
   </div>
@@ -72,10 +70,12 @@ export default {
     const { connection } = this.$store.getters;
     const roomId = this.$route.params.id;
 
-    connection.emit('ROOM_CONNECT', {
-      roomId,
-      username: this.username,
-    });
+    if (this.username) {
+      connection.emit('ROOM_CONNECT', {
+        roomId,
+        username: this.username,
+      });
+    }
   },
   beforeUnmount() {
     this.$store.dispatch('handleRoomStateReset');
