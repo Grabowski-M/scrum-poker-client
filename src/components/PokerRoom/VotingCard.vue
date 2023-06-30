@@ -1,7 +1,7 @@
 <template>
   <div
     class="votingCard"
-    :class="{ active }"
+    :class="{ disabled, active }"
     @click="() => this.changeActiveCard(value)"
   >
     {{ value }}

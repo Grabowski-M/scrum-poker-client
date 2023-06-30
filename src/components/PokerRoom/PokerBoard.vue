@@ -13,6 +13,9 @@
           :remove-participant="() => removeParticipant(participant.socketId)"
         />
     </div>
+    <div class="progressBarContainer">
+      <progress-bar :progress="progress" :participantsNumber="participantsNumber" />
+    </div>
     <div class="bottomSection">
       <div class="bottomSection__votingCards">
         <voting-card
@@ -35,6 +38,7 @@
 import VotingCard from './VotingCard.vue';
 import UserCard from './UserCard.vue';
 import Timer from './Timer.vue';
+import ProgressBar from './ProgressBar.vue';
 
 export default {
   data() {
@@ -82,11 +86,18 @@ export default {
         card: (this.$store.getters.cards || [])[participant.socketId],
       }));
     },
+    progress() {
+      return this.room.progress;
+    },
+    participantsNumber() {
+      return this.room.participants.length;
+    },
   },
   components: {
     UserCard,
     VotingCard,
     Timer,
+    ProgressBar,
   },
   mounted() {
     const { connection } = this.$store.getters;
@@ -124,6 +135,10 @@ export default {
 
 .bottomSection__timer {
   margin: 16px auto 0;
+}
+
+.progressBarContainer {
+  flex: 1;
 }
 
 .bottomSection__votingCards {

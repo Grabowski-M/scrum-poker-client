@@ -75,6 +75,8 @@ html.light {
 
   --vote-font-color: var(--accent-color);
   --vote-background-color: white;
+
+  --progress-bar-boxshadow-color: var(--accent-color);
 }
 
 html.dark {
@@ -105,6 +107,7 @@ html.dark {
   --voting-card-disabled-background-color: #3e3e3e;
   --voting-card-disabled-font-color: #5f5f5f;
   --voting-card-boxshadow-color: transparent;
+  --progress-bar-boxshadow-color: #5f5f5f;
   --vote-font-color: var(--accent-color);
   --vote-background-color: #282828;
 }
