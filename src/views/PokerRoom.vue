@@ -90,6 +90,14 @@ export default {
           bell.play();
         }
       }
+      if (oldRoom && !oldRoom.voting && newRoom.voting) {
+        const muted = JSON.parse(localStorage.getItem('muted'));
+        if (!muted) {
+          const bell = new Audio('/bell.mp3');
+          bell.volume = 0.2;
+          bell.play();
+        }
+      }
     },
   },
 };
