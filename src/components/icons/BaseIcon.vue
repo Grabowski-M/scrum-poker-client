@@ -15,6 +15,7 @@ import CrownIcon from './assets/CrownIcon.vue';
 import DoubleChevronUpIcon from './assets/DoubleChevronUpIcon.vue';
 import VolumeOff from './assets/VolumeOff.vue';
 import VolumeUp from './assets/VolumeUp.vue';
+import Cross from './assets/Cross.vue';
 
 const icons = {
   star: StarIcon,
@@ -24,6 +25,7 @@ const icons = {
   doubleChevronUp: DoubleChevronUpIcon,
   volumeOff: VolumeOff,
   volumeUp: VolumeUp,
+  cross: Cross,
 };
 
 export default {

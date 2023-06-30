@@ -10,6 +10,7 @@
           :username="participant.username"
           :voting-finished="!room.voting"
           :promote-to-leader="() => promoteToLeader(participant.socketId)"
+          :remove-participant="() => removeParticipant(participant.socketId)"
         />
     </div>
     <div class="bottomSection">
@@ -52,6 +53,10 @@ export default {
     promoteToLeader(participantId) {
       const { connection } = this.$store.getters;
       connection.emit('PROMOTE_TO_LEADER', { participantId });
+    },
+    removeParticipant(participantId) {
+      const { connection } = this.$store.getters;
+      connection.emit('REMOVE_PARTICIPANT', { participantId });
     },
   },
   computed: {

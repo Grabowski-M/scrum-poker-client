@@ -5,21 +5,21 @@
         <h1 class="pokerRoom__header">Room #{{ room.roomId }}</h1>
         <div class="pokerRoom__control" v-if="isLeader">
           <custom-button
-            class-name="pokerRoom__control__button"
-            :on-click="startVoting"
-            custom-type="outlined"
-            :disabled="room.voting">
+              class-name="pokerRoom__control__button"
+              :on-click="startVoting"
+              custom-type="outlined"
+              :disabled="room.voting">
             start voting
           </custom-button>
           <custom-button
-            :on-click="showCards"
-            custom-type="outlined"
-            class-name="pokerRoom__control__button"
-            :disabled="!room.voting">
+              :on-click="showCards"
+              custom-type="outlined"
+              class-name="pokerRoom__control__button"
+              :disabled="!room.voting">
             show cards
           </custom-button>
         </div>
-        <poker-board :room="room" />
+        <poker-board :room="room"/>
       </div>
     </div>
   </div>
@@ -82,7 +82,18 @@ export default {
   },
   watch: {
     room(newRoom, oldRoom) {
-      if (oldRoom && oldRoom.voting && !newRoom.voting) {
+      const { connection } = this.$store.getters;
+
+      const votingEnded = oldRoom && oldRoom.voting && !newRoom.voting;
+      const votingStarted = oldRoom && !oldRoom.voting && newRoom.voting;
+      const userGotKickedOut = !newRoom.participants
+        .find((participant) => participant.socketId === connection.id);
+
+      if (userGotKickedOut) {
+        this.$router.push('/');
+      }
+
+      if (votingEnded) {
         const muted = JSON.parse(localStorage.getItem('muted'));
         if (!muted) {
           const bell = new Audio('/notification.mp3');
@@ -90,7 +101,7 @@ export default {
           bell.play();
         }
       }
-      if (oldRoom && !oldRoom.voting && newRoom.voting) {
+      if (votingStarted) {
         const muted = JSON.parse(localStorage.getItem('muted'));
         if (!muted) {
           const bell = new Audio('/bell.mp3');

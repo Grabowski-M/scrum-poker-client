@@ -2,21 +2,27 @@
   <div class="userCard" :class="{ 'high': card?.high, low: card?.low }">
     <div class="userCard__vote">
       {{ card === undefined ? "?" : card.value }}
-    </div>
-    <div class="userCard__username">
-      {{ username }}
-      <i @click="() => promoteToLeader()">
+      <i class="userCard__icon userCard__icon--promote" @click="() => promoteToLeader()">
         <BaseIcon
           v-if="!participantIsLeader && isLeader"
           name="crown"
-          class="userCard__icon userCard__icon--promote"
         />
       </i>
-      <BaseIcon
+      <i class="userCard__icon userCard__icon--remove" v-on:dblclick="() => removeParticipant()">
+        <BaseIcon
+          v-if="!participantIsLeader && isLeader"
+          name="cross"
+        />
+      </i>
+      <i class="userCard__icon userCard__icon--leader">
+        <BaseIcon
         v-if="participantIsLeader"
         name="crown"
-        class="userCard__icon userCard__icon--leader"
       />
+      </i>
+    </div>
+    <div class="userCard__username">
+      {{ username }}
     </div>
   </div>
 </template>
@@ -33,6 +39,7 @@ export default {
     participantIsLeader: Boolean,
     isLeader: Boolean,
     promoteToLeader: Function,
+    removeParticipant: Function,
   },
 };
 </script>
@@ -59,19 +66,9 @@ export default {
 }
 
 .userCard__icon {
-  width: 22px;
-  height: 22px;
   position: absolute;
   top: 0;
   left: 0;
-  padding: 4px;
-}
-
-.userCard__icon--leader {
-  fill: var(--accent-color);
-}
-
-.userCard__icon--promote {
   cursor: pointer;
   transform: scale(1);
   transition: transform 0.3s, opacity 0.3s;
@@ -79,8 +76,25 @@ export default {
   opacity: 0.2;
 }
 
-.userCard__icon--promote:hover {
+.userCard__icon svg {
+  width: 22px;
+  height: 22px;
+  padding: 4px;
+}
+
+.userCard__icon--leader {
+  fill: var(--accent-color);
+}
+
+.userCard__icon--promote:hover,
+.userCard__icon--remove:hover {
   transform: scale(1.15);
+}
+
+.userCard__icon--remove {
+  right: 0;
+  top: 0;
+  left: auto;
 }
 
 .userCard__vote {
