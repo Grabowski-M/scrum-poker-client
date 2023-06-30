@@ -1,7 +1,7 @@
 <template>
   <div
     class="votingCard"
-    :class="{ disabled, active }"
+    :class="{ active }"
     @click="() => this.changeActiveCard(value)"
   >
     {{ value }}
@@ -53,12 +53,18 @@ export default {
 }
 
 .votingCard:hover,
-.votingCard.active,
 .votingCard.active.disabled,
 .votingCard.active.disabled:hover {
   background: var(--voting-card-hovered-background-color);
   color: var(--voting-card-hovered-font-color);
   box-shadow: 2px 2px 5px 1px var(--voting-card-boxshadow-color);
   transform: scale(1.05);
+}
+
+.votingCard.active {
+  background: var(--voting-card-hovered-background-color);
+  color: var(--voting-card-hovered-font-color);
+  box-shadow: 2px 2px 5px 1px var(--voting-card-boxshadow-color);
+  transform: scale(1.05) translateY(-10px);
 }
 </style>

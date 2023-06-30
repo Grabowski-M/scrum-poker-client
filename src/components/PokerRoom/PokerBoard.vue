@@ -47,6 +47,11 @@ export default {
       if (this.room.voting) {
         const { connection } = this.$store.getters;
         connection.emit('CARD_CHANGE', { card });
+
+        if (this.activeCard === card) {
+          this.activeCard = null;
+          return;
+        }
         this.activeCard = card;
       }
     },
