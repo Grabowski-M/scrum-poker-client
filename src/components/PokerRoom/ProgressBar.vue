@@ -46,7 +46,7 @@ export default {
 
 .progress {
   border-radius: 6px;
-  min-width: 5px;
+  min-width: 12px;
   height: 100%;
   background: var(--accent-color);
   transition: 0.3s;
