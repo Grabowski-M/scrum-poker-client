@@ -3,11 +3,11 @@
     <div class="progressBar">
       <div
           class="progress"
-          :style="{'width': `${(progress / participantsNumber) * 100}%`}"
+          :style="{'width': `${(progressPercentage > 100 ? 100 : progressPercentage)}%`}"
       />
     </div>
     <div class="progressText">
-      {{progress}} / {{participantsNumber}}
+      {{ progress }} / {{ participantsNumber }}
     </div>
   </div>
 </template>
@@ -19,6 +19,11 @@ export default {
     progress: Number,
     participantsNumber: Number,
   },
+  computed: {
+    progressPercentage() {
+      return (this.progress / this.participantsNumber) * 100;
+    },
+  },
 };
 </script>
 
@@ -27,6 +32,12 @@ export default {
   width: 100%;
   height: 40px;
   text-align: center;
+  margin: 20px auto 0;
+
+  @media screen and (max-width: 720px) {
+    height: 20px;
+    width: 60%;
+  }
 }
 
 .progressBar {

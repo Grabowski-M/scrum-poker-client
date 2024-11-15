@@ -1,17 +1,18 @@
 <template>
   <div class="timer">
     <div v-if="isLeader || !!counter" class="timer__counter" :class="statusClassName">
+      <h4>Meeting timer</h4>
       {{ counter ? timeToDisplay : '00:00' }}
     </div>
     <div v-if="isLeader" class="timer__buttons">
       <div class="timer__buttons--row">
-        <button class="button__time" @click="(e) => submitTime(e, 1)">1 min</button>
-        <button class="button__time" @click="(e) => submitTime(e, 5)">5 min</button>
-        <button class="button__time" @click="(e) => submitTime(e, 10)">10 min</button>
+        <button class="button__time" @click="(e) => submitTime(e, 15)">15min</button>
+        <button class="button__time" @click="(e) => submitTime(e, 30)">30min</button>
+        <button class="button__time" @click="(e) => submitTime(e, 45)">45min</button>
       </div>
       <div class="timer__buttons--row">
-        <button class="button__time" @click="(e) => submitTime(e, 15)">15 min</button>
-        <button class="button__time" @click="(e) => submitTime(e, 20)">20 min</button>
+        <button class="button__time" @click="(e) => submitTime(e, 60)">1h</button>
+        <button class="button__time" @click="(e) => submitTime(e, 90)">1h 30min</button>
         <button class="button__time" @click="resetTime">Reset</button>
       </div>
     </div>
@@ -57,6 +58,18 @@ export default {
     changePageTitle(title) {
       document.title = title;
     },
+    playSound(fileName) {
+      const muted = JSON.parse(localStorage.getItem('muted'));
+
+      if (muted) return;
+
+      const notificationSound = new Audio('/notificationSound.mp3');
+      const sound = new Audio(`/${fileName}.mp3`);
+      notificationSound.play();
+      setTimeout(() => {
+        sound.play();
+      }, 1000);
+    },
     startCounting() {
       this.stopCounting();
 
@@ -67,6 +80,21 @@ export default {
         const lowerThan3min = diff < 3 * 60 * 1000;
         const lowerThanMinute = diff < 60 * 1000;
         const countingFinished = Math.floor(diff) <= 0;
+        const timeLeft5 = Math.floor(diff / 1000) === 15 * 60;
+        const timeLeft10 = Math.floor(diff / 1000) === 10 * 60;
+        const timeLeft30 = Math.floor(diff / 1000) === 30 * 60;
+
+        if (timeLeft5) {
+          this.playSound('5minutesRemaining');
+        }
+
+        if (timeLeft10) {
+          this.playSound('10minutesRemaining');
+        }
+
+        if (timeLeft30) {
+          this.playSound('30minutesRemaining');
+        }
 
         if (lowerThan3min) {
           this.statusClassName = 'warning';
@@ -78,8 +106,9 @@ export default {
 
         if (countingFinished) {
           this.stopCounting();
+          this.playSound('theTimeIsUpSound');
         } else {
-          this.timeToDisplay = dayjs.duration(diff).format('mm:ss');
+          this.timeToDisplay = dayjs.duration(diff).format('H:mm:ss');
           this.changePageTitle(`${this.timeToDisplay} - Scrum poker`);
         }
       };
@@ -140,7 +169,7 @@ export default {
 }
 
 .timer__buttons {
-  margin-bottom: 16px;
+  margin: 16px 0;
   color: var(--button-secondary-font-color);
   opacity: 0;
   transition: 0.3s;
@@ -176,6 +205,11 @@ export default {
   transition: color 5s;
   color: var(--font-color);
   text-align: center;
+
+  h4 {
+    margin: 16px 0 24px;
+    font-size: 3rem;
+  }
 }
 
 .timer__counter.warning {

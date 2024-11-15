@@ -50,11 +50,15 @@ export default {
   width: 100%;
   max-width: 120px;
   height: 170px;
-  margin: 12px;
   background: var(--vote-background-color);
   border-radius: 12px;
   box-shadow: 0 0 10px -5px var(--accent-color);
   transition: background-color 0.3s;
+
+  @media screen and (max-width: 720px) {
+    max-width: 80px;
+    height: 100px;
+  }
 }
 
 .userCard.high {
@@ -105,6 +109,10 @@ export default {
   justify-content: center;
   color: var(--vote-font-color);
   text-shadow: 0 0 2px var(--accent-color);
+
+  @media screen and (max-width: 720px) {
+    font-size: 2rem;
+  }
 }
 
 .userCard__username {
@@ -116,5 +124,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 720px) {
+    font-size: 1.2rem;
+  }
 }
 </style>

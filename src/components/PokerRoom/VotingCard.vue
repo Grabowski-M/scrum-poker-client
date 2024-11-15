@@ -36,6 +36,12 @@ export default {
   color: var(--voting-card-font-color);
   box-shadow: 0 0 4px -1px var(--voting-card-boxshadow-color);
   transform: scale(1);
+
+  @media screen and (max-width: 720px) {
+    height: 60px;
+    margin: 12px;
+    font-size: 1.6rem;
+  }
 }
 
 .votingCard.disabled {

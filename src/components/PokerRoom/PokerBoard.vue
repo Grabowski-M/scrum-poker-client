@@ -128,7 +128,9 @@ export default {
 
 .votes {
   flex: 1;
+  gap: 40px 12px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
@@ -143,7 +145,7 @@ export default {
 
 .bottomSection__votingCards {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: center;
   align-self: flex-end;
